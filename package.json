@@ -1,0 +1,23 @@
+{
+  "name": "tg-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/limee-0-0/tg-bot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/limee-0-0/tg-bot/issues"
+  },
+  "homepage": "https://github.com/limee-0-0/tg-bot#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
