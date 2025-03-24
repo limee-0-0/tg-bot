@@ -32,9 +32,15 @@ def message_handler(message):
     user_id = message.chat.id
     text = message.text
 
-    reply = user_message_handler(user_id, text)
-    keyboard_type = user_message_handler(user_id, text)
-    bot.send_message(user_id, text=reply, reply_markup=keyboard_type)
+    reply, keyboard_type = user_message_handler(user_id, text)
+
+    if keyboard_type == 'answers':
+        reply_markup = kb.answers
+    else:
+        reply_markup = kb.reset_test
+    
+    bot.send_message(user_id, text=reply, reply_markup=reply_markup)
+
 
 
 

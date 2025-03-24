@@ -5,11 +5,11 @@ basepath = path.dirname(__file__)
 filename = 'questions.json'
 filepath = path.abspath(path.join(basepath, '..', '..', filename))
 
-with open(filepath, 'r') as file:
+with open(filepath, 'r', encoding='utf-8') as file:
   questions = json.load(file)
 
 def user_message_handler(user_id, text):
-    keyboard_type = 'answers'
+    keyboard_type = 'kb.answers'
     reply = ''
     
     base = path.dirname(__file__)
@@ -21,9 +21,9 @@ def user_message_handler(user_id, text):
     if text == 'Начать тест':
         makedirs(path.dirname(user_answer_path), exist_ok=True)
 
-        with open(user_answer_path, 'w') as file:
+        with open(user_answer_path, 'w', encoding='utf-8') as file:
             json.dump(user_answer, file, indent=4)
-        
+
         question_number = questions[0]['question_number']
         question = questions[0]['question']
         answers = questions[0]['answers']
@@ -33,7 +33,7 @@ def user_message_handler(user_id, text):
         pass
     else:
         reply = 'Прости, я тебя не понял :(\nПожалуйста, нажимай на кнопочки'
-        
+
     return reply, keyboard_type
     
     
