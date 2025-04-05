@@ -1,6 +1,5 @@
 import json
 from os import path, makedirs
-from functools import reduce
 
 basepath = path.dirname(__file__)
 filename = 'questions.json'
@@ -15,14 +14,12 @@ def user_message_handler(user_id, text):
     
     user_answer_name = str(user_id) + '.json'
     user_answer_path = path.abspath(path.join(basepath, '..', 'answers', user_answer_name))
-    
-    empty_user_answers = []
 
-    if text == 'Начать тест':
+    if text == 'Начать тест' or text == 'Начать заново':
         makedirs(path.dirname(user_answer_path), exist_ok=True)
 
         with open(user_answer_path, 'w', encoding='utf-8') as file:
-            json.dump(empty_user_answers, file, indent=4)
+            json.dump([], file, indent=4)
 
         question_number = questions[0]['question_number']
         question = questions[0]['question']
@@ -74,14 +71,6 @@ def user_message_handler(user_id, text):
             answers = questions[current_question_index + 1]['answers']
 
             reply = f'Вопрос №{question_number}\n\n{question}\n\n{answers['1']}\n{answers['2']}\n{answers['3']}'
-    elif text == 'Начать заново':
-        with open(user_answer_path, 'w', encoding='utf-8') as file:
-            json.dump(empty_user_answers, file, indent=4)
-
-        question_number = questions[0]['question_number']
-        question = questions[0]['question']
-        answers = questions[0]['answers']
-        reply = f'Вопрос №{question_number}\n\n{question}\n\n{answers['1']}\n{answers['2']}\n{answers['3']}'
     else:
         reply = 'Прости, я тебя не понял :(\nПожалуйста, нажимай на кнопочки'
 
