@@ -24,7 +24,7 @@ def user_message_handler(user_id, text):
         question_number = questions[0]['question_number']
         question = questions[0]['question']
         answers = questions[0]['answers']
-        reply = f'Вопрос №{question_number}\n\n{question}\n\n{answers['1']}\n{answers['2']}\n{answers['3']}'
+        reply = f"Вопрос №{question_number}\n\n{question}\n\n{answers['1']}\n{answers['2']}\n{answers['3']}"
     elif text == '1' or text == '2' or text == '3':
         with open(user_answer_path, 'r', encoding='utf-8') as file:
             current_user_answers = json.load(file)
@@ -70,7 +70,7 @@ def user_message_handler(user_id, text):
             question = questions[current_question_index + 1]['question']
             answers = questions[current_question_index + 1]['answers']
 
-            reply = f'Вопрос №{question_number}\n\n{question}\n\n{answers['1']}\n{answers['2']}\n{answers['3']}'
+            reply = f"Вопрос №{question_number}\n\n{question}\n\n{answers['1']}\n{answers['2']}\n{answers['3']}"
     else:
         reply = 'Прости, я тебя не понял :(\nПожалуйста, нажимай на кнопочки'
 
