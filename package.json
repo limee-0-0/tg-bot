@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "bot-py": "nodemon exec python ./python-bot/bot.py"
+    "bot-py": "nodemon --ignore *.json --exec python ./python-bot/bot.py"
   },
   "repository": {
     "type": "git",
